@@ -1,19 +1,19 @@
-require_relative "generate_organization"
+require_relative "generate_sh_cli_connector"
 
 module Foobara
   module Generators
-    module OrganizationGenerator
-      class WriteOrganizationToDisk < Foobara::Generators::WriteGeneratedFilesToDisk
+    module ShCliConnectorGenerator
+      class WriteShCliConnectorToDisk < Foobara::Generators::WriteGeneratedFilesToDisk
         class << self
           def generator_key
-            "organization"
+            "sh_cli_connector"
           end
         end
 
-        depends_on GenerateOrganization
+        depends_on GenerateShCliConnector
 
         inputs do
-          organization_config OrganizationConfig, :required
+          sh_cli_connector_config ShCliConnectorConfig, :required
           # TODO: should be able to delete this and inherit it
           output_directory :string
         end
@@ -37,8 +37,8 @@ module Foobara
         end
 
         def generate_file_contents
-          # TODO: just pass this in as the inputs instead of the organization??
-          self.paths_to_source_code = run_subcommand!(GenerateOrganization, organization_config.attributes)
+          # TODO: just pass this in as the inputs instead of the sh_cli_connector??
+          self.paths_to_source_code = run_subcommand!(GenerateShCliConnector, sh_cli_connector_config.attributes)
         end
 
         def run_post_generation_tasks

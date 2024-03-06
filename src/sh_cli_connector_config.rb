@@ -2,24 +2,24 @@ require "English"
 
 module Foobara
   module Generators
-    module OrganizationGenerator
-      class OrganizationConfig < Foobara::Model
+    module ShCliConnectorGenerator
+      class ShCliConnectorConfig < Foobara::Model
         attributes do
-          organization_name :string, :required
+          sh_cli_connector_name :string, :required
           description :string, :allow_nil
         end
 
         attr_accessor :module_path
 
         def initialize(attributes = nil, options = {})
-          organization_name = attributes[:organization_name]
+          sh_cli_connector_name = attributes[:sh_cli_connector_name]
           description = attributes[:description]
 
-          module_path = organization_name.split("::")
+          module_path = sh_cli_connector_name.split("::")
 
           super(
             {
-              organization_name:,
+              sh_cli_connector_name:,
               description:
             },
             options

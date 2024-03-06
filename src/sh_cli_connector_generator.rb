@@ -1,14 +1,14 @@
 module Foobara
   module Generators
-    module OrganizationGenerator
+    module ShCliConnectorGenerator
       module Generators
-        class OrganizationGenerator < Foobara::FilesGenerator
+        class ShCliConnectorGenerator < Foobara::FilesGenerator
           class << self
             def manifest_to_generator_classes(manifest)
               case manifest
-              when OrganizationConfig
+              when ShCliConnectorConfig
                 [
-                  Generators::OrganizationGenerator
+                  Generators::ShCliConnectorGenerator
                 ]
               else
                 # :nocov:
@@ -19,7 +19,7 @@ module Foobara
           end
 
           def template_path
-            ["src", "organization.rb.erb"]
+            ["src", "sh_cli_connector.rb.erb"]
           end
 
           def target_path
@@ -30,7 +30,7 @@ module Foobara
             ["src", *path, file]
           end
 
-          alias organization_config relevant_manifest
+          alias sh_cli_connector_config relevant_manifest
 
           def templates_dir
             "#{__dir__}/../templates"
@@ -39,12 +39,12 @@ module Foobara
           # TODO: promote this up to base project
           def ==(other)
             # :nocov:
-            self.class == other.class && organization_config == other.organization_config
+            self.class == other.class && sh_cli_connector_config == other.sh_cli_connector_config
             # :nocov:
           end
 
           def hash
-            organization_config.hash
+            sh_cli_connector_config.hash
           end
         end
       end

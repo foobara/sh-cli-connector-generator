@@ -1,6 +1,6 @@
 module Foobara
   module Generators
-    module OrganizationGenerator
+    module ShCliConnectorGenerator
       VERSION = "0.0.1".freeze
     end
   end

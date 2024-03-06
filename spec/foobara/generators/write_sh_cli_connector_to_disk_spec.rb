@@ -1,22 +1,22 @@
-RSpec.describe Foobara::Generators::OrganizationGenerator::WriteOrganizationToDisk do
-  let(:organization) { described_class.new(inputs) }
-  let(:outcome) { organization.run }
+RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnectorToDisk do
+  let(:sh_cli_connector) { described_class.new(inputs) }
+  let(:outcome) { sh_cli_connector.run }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:inputs) do
     {
-      organization_config:,
+      sh_cli_connector_config:,
       output_directory:
     }
   end
-  let(:organization_config) do
+  let(:sh_cli_connector_config) do
     {
-      organization_name:,
+      sh_cli_connector_name:,
       description: "whatever"
     }
   end
-  let(:organization_name) { "SomeOrg" }
-  let(:output_directory) { "#{__dir__}/../../../tmp/organization_test_suite_output" }
+  let(:sh_cli_connector_name) { "SomeOrg" }
+  let(:output_directory) { "#{__dir__}/../../../tmp/sh_cli_connector_test_suite_output" }
 
   before do
     # rubocop:disable RSpec/AnyInstance
@@ -30,7 +30,7 @@ RSpec.describe Foobara::Generators::OrganizationGenerator::WriteOrganizationToDi
     it "contains base files" do
       expect(outcome).to be_success
 
-      expect(organization.paths_to_source_code.keys).to include("src/some_org.rb")
+      expect(sh_cli_connector.paths_to_source_code.keys).to include("src/some_org.rb")
     end
   end
 
@@ -38,13 +38,13 @@ RSpec.describe Foobara::Generators::OrganizationGenerator::WriteOrganizationToDi
     context "with no output directory" do
       let(:inputs) do
         {
-          organization_config:
+          sh_cli_connector_config:
         }
       end
 
       it "writes files to the current directory" do
-        organization.cast_and_validate_inputs
-        expect(organization.output_directory).to eq(".")
+        sh_cli_connector.cast_and_validate_inputs
+        expect(sh_cli_connector.output_directory).to eq(".")
       end
     end
   end

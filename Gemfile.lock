@@ -1,6 +1,6 @@
 GIT
   remote: foobara
-  revision: ec078ef1126bf4528242b2c8c242c78ef93ab566
+  revision: bed98da02523603da9278202fc01c01b4c24f00f
   branch: main
   specs:
     foobara (0.0.1)
@@ -34,7 +34,7 @@ GIT
 PATH
   remote: .
   specs:
-    foobara-organization-generator (0.0.1)
+    foobara-sh-cli-connector-generator (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -145,8 +145,8 @@ PLATFORMS
 DEPENDENCIES
   foobara!
   foobara-files-generator!
-  foobara-organization-generator!
   foobara-rubocop-rules!
+  foobara-sh-cli-connector-generator!
   foobara-spec-helpers!
   foobara-util!
   guard-rspec

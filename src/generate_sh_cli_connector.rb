@@ -1,16 +1,16 @@
 require "pathname"
 
-require_relative "organization_config"
+require_relative "sh_cli_connector_config"
 
 module Foobara
   module Generators
-    module OrganizationGenerator
-      class GenerateOrganization < Foobara::Generators::Generate
+    module ShCliConnectorGenerator
+      class GenerateShCliConnector < Foobara::Generators::Generate
         class MissingManifestError < RuntimeError; end
 
         possible_error MissingManifestError
 
-        inputs OrganizationConfig
+        inputs ShCliConnectorConfig
 
         def execute
           add_initial_elements_to_generate
@@ -25,7 +25,7 @@ module Foobara
         attr_accessor :manifest_data
 
         def base_generator
-          Generators::OrganizationGenerator
+          Generators::ShCliConnectorGenerator
         end
 
         # TODO: delegate this to base_generator
@@ -37,11 +37,11 @@ module Foobara
         end
 
         def add_initial_elements_to_generate
-          elements_to_generate << organization_config
+          elements_to_generate << sh_cli_connector_config
         end
 
-        def organization_config
-          @organization_config ||= OrganizationConfig.new(inputs)
+        def sh_cli_connector_config
+          @sh_cli_connector_config ||= ShCliConnectorConfig.new(inputs)
         end
       end
     end
