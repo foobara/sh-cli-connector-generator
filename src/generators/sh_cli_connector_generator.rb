@@ -23,7 +23,7 @@ module Foobara
           alias sh_cli_connector_config relevant_manifest
 
           def templates_dir
-            "#{__dir__}/../templates"
+            "#{__dir__}/../../templates"
           end
 
           # TODO: promote this up to base project
