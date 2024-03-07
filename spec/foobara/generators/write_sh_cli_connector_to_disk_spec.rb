@@ -1,6 +1,6 @@
 RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnectorToDisk do
-  let(:sh_cli_connector) { described_class.new(inputs) }
-  let(:outcome) { sh_cli_connector.run }
+  let(:command) { described_class.new(inputs) }
+  let(:outcome) { command.run }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:inputs) do
@@ -38,14 +38,14 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
     it "contains base files" do
       expect(outcome).to be_success
 
-      expect(sh_cli_connector.paths_to_source_code.keys).to include("bin/some-cli")
+      expect(command.paths_to_source_code.keys).to include("bin/some-cli")
     end
 
     it "updates the Gemfile" do
       expect(outcome).to be_success
 
       expect(
-        sh_cli_connector.paths_to_source_code["Gemfile"]
+        command.paths_to_source_code["Gemfile"]
       ).to include('gem "foobara-sh-cli-connector", github: "foobara/sh-cli-connector"')
     end
 
@@ -53,7 +53,7 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
       expect(outcome).to be_success
 
       expect(
-        sh_cli_connector.paths_to_source_code["test-org-test-domain.gemspec"]
+        command.paths_to_source_code["test-org-test-domain.gemspec"]
       ).to include('spec.executables += ["some-cli"]')
     end
   end
@@ -67,8 +67,8 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
       end
 
       it "writes files to the current directory" do
-        sh_cli_connector.cast_and_validate_inputs
-        expect(sh_cli_connector.output_directory).to eq(".")
+        command.cast_and_validate_inputs
+        expect(command.output_directory).to eq(".")
       end
     end
   end

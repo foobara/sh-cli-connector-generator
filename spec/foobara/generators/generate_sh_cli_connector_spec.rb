@@ -6,8 +6,8 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::GenerateShCliConnec
       name:
     }
   end
-  let(:sh_cli_connector) { described_class.new(inputs) }
-  let(:outcome) { sh_cli_connector.run }
+  let(:command) { described_class.new(inputs) }
+  let(:outcome) { command.run }
   let(:result) { outcome.result }
 
   it "generates a sh_cli_connector" do

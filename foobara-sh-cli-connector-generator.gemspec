@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.authors = ["Miles Georgi"]
   spec.email = ["azimux@gmail.com"]
 
-  spec.summary = "Generates Foobara sh_cli_connectors"
+  spec.summary = "Generates a Foobara sh_cli_connector"
   spec.homepage = "https://github.com/foobara/generators-sh-cli-connector-generator"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.2.2"
+  spec.required_ruby_version = ">= #{File.read("#{__dir__}/.ruby-version")}"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
