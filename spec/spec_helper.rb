@@ -15,6 +15,8 @@ SimpleCov.start do
 end
 
 RSpec.configure do |config|
+  config.exclude_pattern = "spec/fixtures/**/*"
+
   config.filter_run_when_matching :focus
 
   # Enable flags like --only-failures and --next-failure
