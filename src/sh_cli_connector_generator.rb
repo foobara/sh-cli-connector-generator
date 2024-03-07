@@ -9,7 +9,8 @@ module Foobara
               when ShCliConnectorConfig
                 [
                   Generators::BinExecutableGenerator,
-                  Generators::GemfileGenerator
+                  Generators::GemfileGenerator,
+                  Generators::GemspecGenerator
                 ]
               else
                 # :nocov:
