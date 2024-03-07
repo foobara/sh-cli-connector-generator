@@ -13,11 +13,7 @@ module Foobara
             "Gemfile"
           end
 
-          def templates_dir
-            "."
-          end
-
-          def generate(elements_to_generate)
+          def generate(_elements_to_generate)
             contents = File.read(template_path)
 
             match = contents.match(/^gem /)
@@ -27,7 +23,9 @@ module Foobara
               "#{match.pre_match}\n#{new_entry}\n#{match}#{match.post_match}"
             else
               # TODO: maybe print a warning and return the original Gemfile
+              # :nocov:
               raise "Not sure how to inject sh_cli_connector into the Gemfile"
+              # :nocov:
             end
           end
         end
