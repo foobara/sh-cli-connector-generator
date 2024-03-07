@@ -31,7 +31,6 @@ group :development do
   gem "foobara-foob", github: "foobara/foob"
   gem "foobara-organization-generator", github: "foobara/organization-generator"
   gem "foobara-rubocop-rules", github: "foobara/rubocop-rules"
-  gem "foobara-sh-cli-connector", github: "foobara/sh-cli-connector"
   gem "guard-rspec"
   gem "rubocop-rake"
   gem "rubocop-rspec"

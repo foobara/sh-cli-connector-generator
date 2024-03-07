@@ -48,14 +48,12 @@ module Foobara
         end
 
         def rubocop_autocorrect
-          # :nocov:
           Open3.popen3("bundle exec rubocop -A") do |_stdin, _stdout, stderr, wait_thr|
             exit_status = wait_thr.value
             unless exit_status.success?
-              raise "could not rubocop -A. #{stderr.read}"
+              warn "WARNING: could not rubocop -A. #{stderr.read}"
             end
           end
-          # :nocov:
         end
       end
     end
