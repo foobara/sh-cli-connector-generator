@@ -6,7 +6,7 @@ module Foobara
       class WriteShCliConnectorToDisk < Foobara::Generators::WriteGeneratedFilesToDisk
         class << self
           def generator_key
-            "sh_cli_connector"
+            "sh-cli-connector"
           end
         end
 
