@@ -42,6 +42,7 @@ module Foobara
         def run_post_generation_tasks
           Dir.chdir output_directory do
             rubocop_autocorrect
+            rbenv_rehash
           end
         end
 
@@ -50,6 +51,17 @@ module Foobara
             exit_status = wait_thr.value
             unless exit_status.success?
               warn "WARNING: could not rubocop -A. #{stderr.read}"
+            end
+          end
+        end
+
+        def rbenv_rehash
+          Open3.popen3("rbenv rehash") do |_stdin, _stdout, stderr, wait_thr|
+            exit_status = wait_thr.value
+            unless exit_status.success?
+              # :nocov:
+              warn "WARNING: could not: rbenv rehash\n#{stderr.read}"
+              # :nocov:
             end
           end
         end
