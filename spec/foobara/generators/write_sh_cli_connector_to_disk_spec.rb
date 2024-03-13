@@ -34,6 +34,10 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
     end
   end
 
+  before do
+    allow(command).to receive(:rbenv_rehash).and_return(nil)
+  end
+
   describe "#run" do
     it "contains base files" do
       expect(outcome).to be_success

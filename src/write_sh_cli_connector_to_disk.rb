@@ -56,14 +56,14 @@ module Foobara
         end
 
         def rbenv_rehash
+          # :nocov:
           Open3.popen3("rbenv rehash") do |_stdin, _stdout, stderr, wait_thr|
             exit_status = wait_thr.value
             unless exit_status.success?
-              # :nocov:
               warn "WARNING: could not: rbenv rehash\n#{stderr.read}"
-              # :nocov:
             end
           end
+          # :nocov:
         end
       end
     end
