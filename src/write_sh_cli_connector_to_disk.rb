@@ -41,8 +41,25 @@ module Foobara
 
         def run_post_generation_tasks
           Dir.chdir output_directory do
+            bundle_install
             rubocop_autocorrect
             rbenv_rehash
+          end
+        end
+
+        def bundle_install
+          cmd = "bundle install"
+
+          Bundler.with_unbundled_env do
+            Open3.popen3(cmd) do |_stdin, _stdout, stderr, wait_thr|
+              exit_status = wait_thr.value
+
+              unless exit_status.success?
+                # :nocov:
+                warn "WARNING: could not #{cmd}\n#{stderr.read}"
+                # :nocov:puts "bundling..."
+              end
+            end
           end
         end
 
@@ -50,7 +67,9 @@ module Foobara
           Open3.popen3("bundle exec rubocop --no-server -A") do |_stdin, _stdout, stderr, wait_thr|
             exit_status = wait_thr.value
             unless exit_status.success?
+              # :nocov:
               warn "WARNING: could not rubocop -A. #{stderr.read}"
+              # :nocov:
             end
           end
         end
