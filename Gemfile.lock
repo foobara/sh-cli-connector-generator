@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foobara-sh-cli-connector-generator (0.0.1)
+    foobara-sh-cli-connector-generator (0.0.2)
       foobara
       foobara-files-generator
 
@@ -14,9 +14,9 @@ GEM
     diff-lcs (1.5.1)
     docile (1.4.0)
     ffi (1.17.0-x86_64-linux-gnu)
-    foobara (0.0.1)
+    foobara (0.0.2)
       foobara-util
-    foobara-files-generator (0.0.1)
+    foobara-files-generator (0.0.3)
       foobara
     foobara-rubocop-rules (0.0.3)
       rubocop
@@ -51,7 +51,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     parallel (1.25.1)
-    parser (3.3.3.0)
+    parser (3.3.4.0)
       ast (~> 2.4.1)
       racc
     pry (0.14.2)
@@ -67,7 +67,7 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     regexp_parser (2.9.2)
-    rexml (3.3.0)
+    rexml (3.3.2)
       strscan
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -85,13 +85,13 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.1)
-    rubocop (1.64.1)
+    rubocop (1.65.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8, < 3.0)
+      regexp_parser (>= 2.4, < 3.0)
       rexml (>= 3.2.5, < 4.0)
       rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
@@ -100,7 +100,7 @@ GEM
       parser (>= 3.3.1.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (3.0.1)
+    rubocop-rspec (3.0.3)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     shellany (0.0.1)

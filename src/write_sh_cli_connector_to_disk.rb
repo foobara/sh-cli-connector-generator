@@ -1,9 +1,12 @@
 require_relative "generate_sh_cli_connector"
+require "foobara/files_generator/bundler_actions"
 
 module Foobara
   module Generators
     module ShCliConnectorGenerator
       class WriteShCliConnectorToDisk < Foobara::Generators::WriteGeneratedFilesToDisk
+        include Foobara::FilesGenerator::BundlerActions
+
         class << self
           def generator_key
             "sh-cli-connector"
@@ -44,22 +47,6 @@ module Foobara
             bundle_install
             rubocop_autocorrect
             rbenv_rehash
-          end
-        end
-
-        def bundle_install
-          cmd = "bundle install"
-
-          Bundler.with_unbundled_env do
-            Open3.popen3(cmd) do |_stdin, _stdout, stderr, wait_thr|
-              exit_status = wait_thr.value
-
-              unless exit_status.success?
-                # :nocov:
-                warn "WARNING: could not #{cmd}\n#{stderr.read}"
-                # :nocov:puts "bundling..."
-              end
-            end
           end
         end
 
