@@ -50,7 +50,7 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
 
       expect(
         command.paths_to_source_code["Gemfile"]
-      ).to include('gem "foobara-sh-cli-connector", github: "foobara/sh-cli-connector"')
+      ).to include('gem "foobara-sh-cli-connector"')
     end
 
     it "updates the .gemspec to add to the list of executables" do

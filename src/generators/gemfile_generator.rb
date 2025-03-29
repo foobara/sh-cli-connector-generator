@@ -21,7 +21,7 @@ module Foobara
             match = gemfile_contents.match(/^gem /)
 
             if match
-              new_entry = 'gem "foobara-sh-cli-connector", github: "foobara/sh-cli-connector"'
+              new_entry = 'gem "foobara-sh-cli-connector"'
               "#{match.pre_match}\n#{new_entry}\n#{match}#{match.post_match}"
             else
               # TODO: maybe print a warning and return the original Gemfile
