@@ -11,7 +11,8 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
   end
   let(:sh_cli_connector_config) do
     {
-      name:
+      name:,
+      rbenv: true
     }
   end
   let(:name) { "some-cli" }
@@ -32,10 +33,6 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
     Dir.chdir output_directory do
       example.run
     end
-  end
-
-  before do
-    allow(command).to receive(:rbenv_rehash).and_return(nil)
   end
 
   describe "#run" do

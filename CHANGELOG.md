@@ -1,3 +1,7 @@
+## [0.0.5] - 2025-05-03
+
+- Make failures when shelling out warn instead of fail especially for users without rbenv
+
 ## [0.0.4] - 2025-03-28
 
 - Stop generating github: lines in Gemfile

@@ -46,29 +46,43 @@ module Foobara
           Dir.chdir output_directory do
             bundle_install
             rubocop_autocorrect
-            rbenv_rehash
+
+            if rbenv?
+              rbenv_rehash
+            end
           end
+        end
+
+        def rbenv?
+          sh_cli_connector_config.rbenv
         end
 
         def rubocop_autocorrect
-          Open3.popen3("bundle exec rubocop --no-server -A") do |_stdin, _stdout, stderr, wait_thr|
-            exit_status = wait_thr.value
-            unless exit_status.success?
-              # :nocov:
-              warn "WARNING: could not rubocop -A. #{stderr.read}"
-              # :nocov:
+          puts "linting..."
+
+          cmd = "bundle exec rubocop --no-server -A"
+
+          if Bundler.respond_to?(:with_unbundled_env)
+            Bundler.with_unbundled_env do
+              run_cmd_and_return_output(cmd)
             end
+          else
+            # :nocov:
+            run_cmd_and_return_output(cmd)
+            # :nocov:
           end
+        rescue CouldNotExecuteError => e
+          # :nocov:
+          warn e.message
+          # :nocov:
         end
 
         def rbenv_rehash
+          cmd = "rbenv rehash"
+          run_cmd_and_return_output(cmd)
+        rescue CouldNotExecuteError => e
           # :nocov:
-          Open3.popen3("rbenv rehash") do |_stdin, _stdout, stderr, wait_thr|
-            exit_status = wait_thr.value
-            unless exit_status.success?
-              warn "WARNING: could not: rbenv rehash\n#{stderr.read}"
-            end
-          end
+          warn e.message
           # :nocov:
         end
       end

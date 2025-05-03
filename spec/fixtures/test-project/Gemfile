@@ -15,6 +15,7 @@ group :development do
 end
 
 group :development, :test do
+  gem "foobara-rubocop-rules", "~> 0.0.1"
   gem "pry"
   gem "pry-byebug"
   # TODO: Just adding this to suppress warnings seemingly coming from pry-byebug. Can probably remove this once
