@@ -5,7 +5,7 @@ ruby Foobara::Generators::ShCliConnectorGenerator::MINIMUM_RUBY_VERSION
 
 gemspec
 
-gem "foobara", "< 2.0.0", path: "../foobara"
+# gem "foobara", path: "../foobara"
 
 gem "rake"
 
