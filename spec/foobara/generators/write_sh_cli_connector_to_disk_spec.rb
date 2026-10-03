@@ -46,7 +46,7 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
       expect(outcome).to be_success
 
       expect(
-        command.paths_to_source_code["Gemfile"]
+        command.paths_to_source_code["Gemfile"].content
       ).to include('gem "foobara-sh-cli-connector"')
     end
 
@@ -54,7 +54,7 @@ RSpec.describe Foobara::Generators::ShCliConnectorGenerator::WriteShCliConnector
       expect(outcome).to be_success
 
       expect(
-        command.paths_to_source_code["test-org-test-domain.gemspec"]
+        command.paths_to_source_code["test-org-test-domain.gemspec"].content
       ).to include('spec.executables += ["some-cli"]')
     end
   end

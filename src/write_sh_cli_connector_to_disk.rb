@@ -1,5 +1,4 @@
 require_relative "generate_sh_cli_connector"
-require "foobara/files_generator/bundler_actions"
 
 module Foobara
   module Generators
@@ -67,23 +66,23 @@ module Foobara
               run_cmd_and_return_output(cmd)
             end
           else
-            # :nocov:
+            # simplecov:disable
             run_cmd_and_return_output(cmd)
-            # :nocov:
+            # simplecov:enable
           end
         rescue CouldNotExecuteError => e
-          # :nocov:
+          # simplecov:disable
           warn e.message
-          # :nocov:
+          # simplecov:enable
         end
 
         def rbenv_rehash
           cmd = "rbenv rehash"
           run_cmd_and_return_output(cmd)
         rescue CouldNotExecuteError => e
-          # :nocov:
+          # simplecov:disable
           warn e.message
-          # :nocov:
+          # simplecov:enable
         end
       end
     end
